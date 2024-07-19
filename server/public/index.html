@@ -6,26 +6,38 @@
     <script defer src="scripts/axios.js"></script>
     <script defer src="scripts/client.js" charset="utf-8"></script>
   </head>
+
+
   <body>
     <h1>Server-Side Calculator</h1>
 
-    <form data-testid="calculator">
-      <input data-testid="numOne" placeholder="First Number">
-      <button>+</button>
-      <button>-</button>
-      <button>*</button>
-      <button>/</button>
-      <input data-testid="numTwo" placeholder="Second Number">
-      <button>=</button>
-      <button>C</button>
+
+    <form data-testid="calculator" id="calculator">
+      <input data-testid="numOne" 
+            id="numOne" 
+            placeholder="First Number"
+            type="number">
+      <button onClick="thisOperator(event)">+</button>
+      <button onClick="thisOperator(event)">-</button>
+      <button onClick="thisOperator(event)">*</button>
+      <button onClick="thisOperator(event)">/</button>
+
+      <input data-testid="numTwo" 
+            id="numTwo" 
+            placeholder="Second Number"
+            type="number">
+      <button onClick="equalButton(event)">=</button>
+      <button onClick="clearButton(event)">C</button>
     </form>
 
-    <section data-testid="recentResult">
+
+    <section data-testid="recentResult" id="recentResult">
       <!-- The most recent calculation result goes here. -->
     </section>
 
-    <section data-testid="resultHistory">
-      <!-- The list of calculation results goes here. -->
+
+    <section data-testid="resultHistory" id="resultHistory">
+      <!-- The list of calculation results goes here including history when it loads. -->
     </section>
   </body>
 </html>
