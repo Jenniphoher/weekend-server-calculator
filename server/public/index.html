@@ -40,14 +40,27 @@
         <button class="times" onClick="thisOperator(event)">*</button>
         <button class="divide" onClick="thisOperator(event)">/</button>
         <button class="equalButton" onClick="equalButton(event)">=</button>
+
+        <button class="zero" onClick="thisNum(event)">0</button>
+        <button class="one" onClick="thisNum(event)">1</button>
+        <button class="two" onClick="thisNum(event)">2</button>
+        <button class="three" onClick="thisNum(event)">3</button>
+        <button class="four" onClick="thisNum(event)">4</button>
+        <button class="five" onClick="thisNum(event)">5</button>
+        <button class="six" onClick="thisNum(event)">6</button>
+        <button class="seven" onClick="thisNum(event)">7</button>
+        <button class="eight" onClick="thisNum(event)">8</button>
+        <button class="nine" onClick="thisNum(event)">9</button>
+
+        <button class="decimal" onClick="thisSymbol(event)">.</button>
         <button class="clearButton" onClick="clearButton()">C</button>
       </div>
 
     </form>
 
-<section data-testid="recentResult" class="recentResult">
+<section data-testid="recentResult" class="recentResult" id="recentResult">
   <!-- The most recent calculation result goes here. -->
-  <span class="resultNum" id="recentResult"></span>
+  <!-- <span class="resultNum" id="recentResult"></span> -->
 </section> 
 
     <section data-testid="resultHistory" class="historySection">

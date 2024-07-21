@@ -95,76 +95,100 @@ input::placeholder {
 
 .buttonDiv {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     text-align: center;
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-top: 46px;
+    margin-left: 5px;
+    margin-right: 5px;
 
 }
 
 button {
-    height:65px;
-    width: 70px;
-    border-radius: 10px;
+    /* display: flex; */
+    flex-direction: column;
+    margin-right: 3px;
+    margin-left: 3px;
+    height: 45px;
+    width: 45px;
+    padding: 10px;
+    border-radius: 50%;
+    background-color:rgba(236, 244, 251, 0.76);
+    font-size: 20px;
 }
 
 .plus {
-    display: flex;
-    flex-direction: row;
-    margin-top: -10px;
-    margin-left: 10px;
-    margin-right: 15px;
-    padding: 20px;
-    font-size: 15px;
+
+    margin-top: 0px;
+    /* margin-left: 10px;
+    margin-right: 15px; */
 }
 
 .minus {
-    display: flex;
-    margin-top: -65px;
-    margin-left: 100px;
-    padding: 20px;
-    font-size: 15px;
+
+    margin-top: 0px;
+    /* margin-left: 100px; */
 }
 
 .times {
-    display: flex;
-    margin-top: 15px;
-    margin-left: 10px;
-    padding: 20px;
-    font-size: 15px;
+    margin-top: 0px;
+    /* margin-left: 10px; */
 }
 
 .divide {
-    display: flex;
-    margin-top: -65px;
-    margin-left: 100px;
-    padding: 20px;
-    font-size: 15px;
+    margin-top: 0px;
+    /* margin-left: 100px; */
 }
 
 .equalButton {
-    display: flex;
-    height: 145px;
-    width: 70px;
-    margin-top: -145px;
-    margin-bottom: 10px;
-    margin-left: 190px;
-    margin-right: 15px;
-    padding: 20px;
+    flex-direction: column;
+    height: 155px;
+    width: 45px;
+    margin-top: 1px;
+    margin-left: 5px;
     border-radius: 10px;
-    font-size: 15px;
+    background-color: rgba(252, 224, 190, 0.78);
+}
+
+.zero {
+    margin-top: 55px;
+    margin-left: -255px;
+    margin-right: 3px;
+}
+
+.one, .two, .three {
+    margin-top: 55px;
+    margin-right: 3px;
+}
+
+.four {
+    margin-top: 110px;
+    margin-left: -202px;
+    margin-right: 3px;
+}
+
+.five, .six, .seven {
+    margin-top: 110px;
+    margin-right: 3px;
+}
+
+.eight {
+    margin-top: 165px;
+    margin-left: -200px;
+    margin-right: 3px;
+}
+
+.nine, .decimal {
+    margin-top: 165px;
+    margin-right: 3px;
 }
 
 .clearButton {
-    display: block;
-    height: 65px;
-    width: 250px;
-    margin-top: 5px;
+    height: 45px;
+    width: 95px;
+    margin-top: 166px;
     margin-bottom: 0px;
-    margin-left: 10px;
+    margin-left: 6px;
     border-radius: 10px;
-    font-size: 15px;
 }
 
 .recentResult {

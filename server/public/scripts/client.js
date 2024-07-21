@@ -11,21 +11,89 @@ console.log('client.js is sourced!');
     // 1. Clear input after clicking submit
     // 2. Clear innerHTML when needed
 
-const recentResult = document.querySelector('#recentResult');
-const resultHistory = document.querySelector('#resultHistory');
-const formCalculator = document.querySelector('#calculator');
+let recentResult = document.querySelector('#recentResult');
+let resultHistory = document.querySelector('#resultHistory');
+let formCalculator = document.querySelector('#calculator');
 let operator;
 let dataObj = {};
 
+let number = '';
+let symbol;
+let orderArray = [];
+
 onloadGet();
 
-// ============================== OPERATOR FUNCTION ============================== 
+// ============================== OPERATOR/NUM/SYMBOL FUNCTION ============================== 
 
 function thisOperator(event) {
     event.preventDefault();
 
+    recentResult.innerHTML = '';
+
     operator = event.target.innerHTML;
-    console.log(operator);
+    console.log('This is last item in array before operator:', orderArray.lastIndexOf());
+    if (typeof orderArray.lastIndexOf() != 'number') {
+        recentResult.innerHTML = 'no num';
+        return false;
+    } else {
+        recentResult.innerHTML = `${operator}`;
+    }
+    console.log('This has been pressed:', operator);
+    console.log('orderArray is now:', orderArray);
+
+    order();
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ STRETCH ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function thisSymbol(event) {
+    event.preventDefault();
+
+    recentResult.innerHTML = '';
+
+    symbol = event.target.innerHTML;
+    if (typeof orderArray[orderArray,length - 1] != 'number') {
+        recentResult.innerHTML = 'no num';
+        return false;
+    } else {
+        recentResult.innerHTML = `${symbol}`;
+    }
+    console.log('This has been pressed:', symbol);
+    console.log('orderArray is now:', orderArray);
+
+    order();
+}
+
+
+
+function thisNum(event) {
+    event.preventDefault();
+
+    number = Number(event.target.innerHTML);
+    recentResult.innerHTML += number;
+    console.log('This has been pressed:', number);
+    console.log('orderArray is now:', orderArray);
+
+    order();
+}
+
+
+
+function order() {
+
+    if(typeof number != 'number') {
+        recentResult.innerHTML = '';
+        return false;
+    } else {
+        orderArray.push(number);
+
+        if(symbol === '.') {
+            orderArray.push(symbol);
+            symbol = '';
+        } else if (typeof operator === 'string') {
+            orderArray.push(operator);
+            operator = 0;
+        } 
+    }
 }
 
 // ============================== POST && EQUAL BUTTON FUNCTION ============================== 
@@ -40,6 +108,8 @@ function equalButton(event) {
     dataObj.numOne = firstNum;
     dataObj.numTwo = secondNum;
     dataObj.operator = operator;
+
+    console.log('This is orderArray after equal:', orderArray);
 
     // ---------------------------------------- RESETS INPUTS
     formCalculator.reset();
@@ -58,6 +128,7 @@ function equalButton(event) {
 // ============================== GET RESULTS FUNCTION ============================== 
 
 function getResult() {
+    
 
     axios({
         method: 'GET',
@@ -67,8 +138,11 @@ function getResult() {
         let data = response.data;
         console.log('This is data in GET:', data);
         let lastData = data[data.length - 1];
-        
-        recentResult.innerHTML = lastData.result;
+
+        // TRYING THINGS OUT FOR TEST = NOPE. DIDN'T WORK.
+        // recentResult = document.querySelector('#recentResult');
+        // recentResult.innerHTML = `${lastData.result}`;
+        recentResult.innerHTML = `<span class="resultNum">${lastData.result}</span>`;
         resultHistory.innerHTML += ` 
             <li>${lastData.numOne} ${lastData.operator} ${lastData.numTwo} = ${lastData.result}</li>`;
 
@@ -89,6 +163,7 @@ function getResult() {
 function clearButton() {
     // ---------------------------------------- innerHTML/innerTEXT 
     recentResult.innerHTML = '';
+    orderArray = [];
 }
 
 // ============================== GET ON LOAD FUNCTION ============================== 
