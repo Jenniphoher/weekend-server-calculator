@@ -5,39 +5,56 @@
     <title>Server-Side Calculator</title>    
     <script defer src="scripts/axios.js"></script>
     <script defer src="scripts/client.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
   </head>
 
 
   <body>
-    <h1>Server-Side Calculator</h1>
+    
+    <h1>Server-Side Calculator.</h1>
+
 
 
     <form data-testid="calculator" id="calculator">
-      <input data-testid="numOne" 
-            id="numOne" 
-            placeholder="First Number"
-            type="number">
-      <button onClick="thisOperator(event)">+</button>
-      <button onClick="thisOperator(event)">-</button>
-      <button onClick="thisOperator(event)">*</button>
-      <button onClick="thisOperator(event)">/</button>
 
-      <input data-testid="numTwo" 
-            id="numTwo" 
-            placeholder="Second Number"
-            type="number">
-      <button onClick="equalButton(event)">=</button>
-      <button onClick="clearButton(event)">C</button>
+      <div class="inputDiv">
+        <input data-testid="numOne" 
+              id="numOne" 
+              placeholder="First Number"
+              type="number">
+        <input data-testid="numTwo" 
+              id="numTwo" 
+              placeholder="Second Number"
+              type="number">
+      </div>
+
+      <div class="buttonDiv">
+        <button class="plus" onClick="thisOperator(event)">+</button>
+        <button class="minus" onClick="thisOperator(event)">-</button>
+        <button class="times" onClick="thisOperator(event)">*</button>
+        <button class="divide" onClick="thisOperator(event)">/</button>
+        <button class="equalButton" onClick="equalButton(event)">=</button>
+        <button class="clearButton" onClick="clearButton()">C</button>
+      </div>
+
     </form>
 
+<section data-testid="recentResult" class="recentResult">
+  <!-- The most recent calculation result goes here. -->
+  <span class="resultNum" id="recentResult"></span>
+</section> 
 
-    <section data-testid="recentResult" id="recentResult">
-      <!-- The most recent calculation result goes here. -->
-    </section>
-
-
-    <section data-testid="resultHistory" id="resultHistory">
+    <section data-testid="resultHistory" class="historySection">
       <!-- The list of calculation results goes here including history when it loads. -->
+      <ul id="resultHistory">
+        <li>6 + 10 = 16</li>
+      </ul>
     </section>
   </body>
 </html>
