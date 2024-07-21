@@ -9,10 +9,6 @@ app.use(express.static('server/public'));
 // calculation objects:
 let calculations = [];
 
-app.listen(PORT, () => {
-  console.log(PORT, 'is running!');
-});
-
 
 // Here's a wonderful place to make some routes:
 
@@ -24,23 +20,73 @@ app.get('/calculations', (req, res) => {
 
 // POST /calculations
 app.post('/calculations', (req, res) => {
-  let dataObj = req.body;
+  let data = req.body;
+  // calculate(data);
+  let sum = 0;
+  
+  switch(data.operator) {
+    case '+':
+      sum = data.numOne + data.numTwo;
+      console.log(`${sum} is: ${data.numOne} ${data.operator} ${data.numTwo}`);
+      data.result = sum;
+      calculations.push(data);
+      console.log('This is calculation array:', calculations);
+      break;
 
-  // put function in here
+    case '-':
+      sum = data.numOne - data.numTwo;
+      data.result = sum;
+      calculations.push(data);
+      break;
 
+    case '*':
+      sum = data.numOne * data.numTwo;
+      data.result = sum;
+      calculations.push(data);
+      break;
 
+    case '/':
+      sum = data.numOne / data.numTwo;
+      data.result = sum;
+      calculations.push(data);
+  } 
 
+  res.sendStatus(201);
 })
 
 
 // create a function that adds a RESULT property to object
 
-function calculate(data) {
-  switch(data.operator) {
-    case '+':
-      
-  }
-}
+// function calculate(data) {
+//   let sum = 0;
+
+//   switch(data.operator) {
+//     case '+':
+//       sum = data.numOne + data.numTwo;
+//       console.log(`${sum} is: ${data.numOne} ${data.operator} ${data.numTwo}`);
+//       data.result = sum;
+//       calculations.push(data);
+//       console.log('This is calculation array:', calculations);
+//       break;
+
+//     case '-':
+//       sum = data.numOne - data.numTwo;
+//       data.result = sum;
+//       calculations.push(data);
+//       break;
+
+//     case '*':
+//       sum = data.numOne * data.numTwo;
+//       data.result = sum;
+//       calculations.push(data);
+//       break;
+
+//     case '/':
+//       sum = data.numOne / data.numTwo;
+//       data.result = sum;
+//       calculations.push(data);
+//   } 
+// }
 
 
 
