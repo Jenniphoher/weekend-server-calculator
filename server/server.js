@@ -44,7 +44,7 @@ app.post('/calculations', (req, res) => {
       data.result = sum;
       calculations.push(data);
       break;
-
+      
     case '/':
       sum = data.numOne / data.numTwo;
       data.result = sum;

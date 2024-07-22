@@ -230,14 +230,14 @@ button {
 }
 
 #resultHistory {
-    margin-top: 15px;
+    /* margin-top: 15px;
     margin-right: 300px;
-    margin-left: 300px;
+    margin-left: 300px; */
     column-count: 3;
     column-gap: 5px;
     column-width: 200px;
-    height: 324px;
-    width: 500px;
+    /* height: 324px;
+    width: 500px; */
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;

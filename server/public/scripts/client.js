@@ -74,6 +74,7 @@ function thisOperator(event) {
 //         recentResult.innerHTML = ''
 //     }
 //     number = Number(event.target.innerHTML);
+
 //     recentResult.innerHTML += `<span class="resultNum">${number}</span>`;
 
 //     console.log('This has been pressed:', number);
