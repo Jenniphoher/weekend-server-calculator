@@ -53,7 +53,7 @@
         <button class="nine" onClick="thisNum(event)">9</button>
 
         <button class="decimal" onClick="thisSymbol(event)">.</button>
-        <button class="clearButton" onClick="clearButton()">C</button>
+        <button class="clearButton" onClick="clearButton(event)">C</button>
       </div>
 
     </form>
@@ -63,11 +63,8 @@
   <!-- <span class="resultNum" id="recentResult"></span> -->
 </section> 
 
-    <section data-testid="resultHistory" class="historySection">
+    <section data-testid="resultHistory" class="historySection" id="resultHistory">
       <!-- The list of calculation results goes here including history when it loads. -->
-      <ul id="resultHistory">
-        <li>6 + 10 = 16</li>
-      </ul>
     </section>
   </body>
 </html>

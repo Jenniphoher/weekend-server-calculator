@@ -14,12 +14,12 @@ console.log('client.js is sourced!');
 let recentResult = document.querySelector('#recentResult');
 let resultHistory = document.querySelector('#resultHistory');
 let formCalculator = document.querySelector('#calculator');
-let operator;
+let operator = 0;
 let dataObj = {};
 
-let number = '';
-let symbol;
-let orderArray = [];
+// let number = '';
+// let symbol;
+// let orderArray = [];
 
 onloadGet();
 
@@ -28,89 +28,91 @@ onloadGet();
 function thisOperator(event) {
     event.preventDefault();
 
-    recentResult.innerHTML = '';
+    // recentResult.innerHTML = '';
 
     operator = event.target.innerHTML;
-    console.log('This is last item in array before operator:', orderArray.lastIndexOf());
-    if (typeof orderArray.lastIndexOf() != 'number') {
-        recentResult.innerHTML = 'no num';
-        return false;
-    } else {
-        recentResult.innerHTML = `${operator}`;
-    }
-    console.log('This has been pressed:', operator);
-    console.log('orderArray is now:', orderArray);
+    // if (typeof orderArray.lastIndexOf() != 'number') {
+    //     recentResult.innerHTML = '';
+    //     return false;
+    // } else {
+    //     recentResult.innerHTML = `<span class="resultNum">${operator}</span>`;
+    // }
+    // console.log('This has been pressed:', operator);
+    // console.log('orderArray is now:', orderArray);
 
-    order();
+    // order(event);
 }
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ STRETCH ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function thisSymbol(event) {
-    event.preventDefault();
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ STRETCH FUNCTIONS
+// function thisSymbol(event) {
+//     event.preventDefault();
 
-    recentResult.innerHTML = '';
+//     symbol = event.target.innerHTML;
+//     if (typeof orderArray.lastIndexOf() != 'number') {
+//         recentResult.innerHTML = '';
+//         return false;
+//     } else {
+//         recentResult.innerHTML += `<span class="resultNum">${symbol}</span>`;
+//     }
+//     console.log('This has been pressed:', symbol);
+//     console.log('orderArray is now:', orderArray);
 
-    symbol = event.target.innerHTML;
-    if (typeof orderArray[orderArray,length - 1] != 'number') {
-        recentResult.innerHTML = 'no num';
-        return false;
-    } else {
-        recentResult.innerHTML = `${symbol}`;
-    }
-    console.log('This has been pressed:', symbol);
-    console.log('orderArray is now:', orderArray);
-
-    order();
-}
+//     order(event);
+// }
 
 
 
-function thisNum(event) {
-    event.preventDefault();
+// function thisNum(event) {
+//     event.preventDefault();
 
-    number = Number(event.target.innerHTML);
-    recentResult.innerHTML += number;
-    console.log('This has been pressed:', number);
-    console.log('orderArray is now:', orderArray);
+//     console.log('This is last item of orderArray:', orderArray[orderArray.length - 1]);
+//     console.log('This is operator:', operator);
+//     if(orderArray[orderArray.length - 1] === '+' 
+//         || orderArray[orderArray.length - 1] === '-'
+//         || orderArray[orderArray.length - 1] === '*'
+//         || orderArray[orderArray.length - 1] === '/') {
+//         recentResult.innerHTML = ''
+//     }
+//     number = Number(event.target.innerHTML);
+//     recentResult.innerHTML += `<span class="resultNum">${number}</span>`;
 
-    order();
-}
+//     console.log('This has been pressed:', number);
+//     console.log('orderArray is now:', orderArray);
+
+//     order(event);
+// }
 
 
 
-function order() {
+// function order(event) {
 
-    if(typeof number != 'number') {
-        recentResult.innerHTML = '';
-        return false;
-    } else {
-        orderArray.push(number);
-
-        if(symbol === '.') {
-            orderArray.push(symbol);
-            symbol = '';
-        } else if (typeof operator === 'string') {
-            orderArray.push(operator);
-            operator = 0;
-        } 
-    }
-}
+//     if(typeof number != 'number') {
+//         recentResult.innerHTML = '';
+//         return false;
+//     } else if(Number(event.target.innerHTML) === number) {
+//         orderArray.push(number);
+//         number = 0;
+//     } else if(event.target.innerHTML === symbol) {
+//         orderArray.push(symbol);
+//         symbol = '';
+//     } else if(event.target.innerHTML === operator) {
+//         orderArray.push(operator);
+//         operator = 0;
+//     }
+// }
 
 // ============================== POST && EQUAL BUTTON FUNCTION ============================== 
 
 function equalButton(event) {
     event.preventDefault();
 
-    const firstNum = document.querySelector('#numOne').valueAsNumber;
-    const secondNum = document.querySelector('#numTwo').valueAsNumber;
-
+    let firstNum = document.querySelector('#numOne').valueAsNumber;
+    let secondNum = document.querySelector('#numTwo').valueAsNumber;
 
     dataObj.numOne = firstNum;
     dataObj.numTwo = secondNum;
     dataObj.operator = operator;
-
-    console.log('This is orderArray after equal:', orderArray);
-
+    
     // ---------------------------------------- RESETS INPUTS
     formCalculator.reset();
 
@@ -120,34 +122,92 @@ function equalButton(event) {
         data: dataObj
     }).then((response) => {
         
-        getResult();
+        onloadGet();
         
     })
 }
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ STRETCH OBJECT FUNCTIONS
+
+// function getTheNum() {
+//     let firstNum = 0;
+//     let firstNumberArray = [];
+//     let secondNumberArray = [];
+
+//     console.log('This is orderArray before looping:', orderArray);
+//     for(let item of orderArray) {
+//         if(item === '+' 
+//             || item === '-'
+//             || item === '*'
+//             || item === '/') {
+//             console.log('Item in orderArray that is a STRING is:', item);
+//             let opIndex = orderArray.indexOf(item);
+//             orderArray.splice(opIndex, 1);
+//             break;
+//         } else {
+//             console.log('Item in orderArray that is a NUMBER or . is:', item);
+//             firstNumberArray.push(item);
+//             let index = orderArray.indexOf(item);
+//             orderArray.splice(index, 1);
+//             console.log('This is firstNumArray HERE:', firstNumberArray);
+//         }
+//     }
+
+//     for(let item of orderArray) {
+//         if(item === '+' 
+//             || item === '-'
+//             || item === '*'
+//             || item === '/') {
+//             console.log('Item in orderArray that is a STRING is:', item);
+//             let opIndex = orderArray.indexOf(item);
+//             orderArray.splice(opIndex, 1);
+//         } else {
+//             console.log('Item in orderArray that is a NUMBER or . is:', item);
+//             secondNumberArray.push(item);
+//             let index = orderArray.indexOf(item);
+//             orderArray.splice(index, 1);
+//             console.log('This is firstNumArray HERE:', secondNumberArray);
+//         }
+//     }
+
+    
+
+//     firstNum = firstNumberArray.join('');
+//     console.log('This is firstNum:', firstNum);
+//     secondNum= secondNumberArray.join('');
+//     return [firstNum, secondNum];
+// }
+
 
 // ============================== GET RESULTS FUNCTION ============================== 
 
-function getResult() {
+// function getResult() {
     
+//     axios({
+//         method: 'GET',
+//         url: '/calculations'
+//     }) 
+//     .then((response) => {
+//         let data = response.data;
+//         // if statement
+//         if(data.length === 0) {
+//             // error?
+//         } else {
+//             let lastData = data[data.length - 1];
 
-    axios({
-        method: 'GET',
-        url: '/calculations'
-    }) 
-    .then((response) => {
-        let data = response.data;
-        console.log('This is data in GET:', data);
-        let lastData = data[data.length - 1];
+//             recentResult.innerHTML = `<span class="resultNum">${lastData.result}</span>`;
+//         }
 
-        // TRYING THINGS OUT FOR TEST = NOPE. DIDN'T WORK.
-        // recentResult = document.querySelector('#recentResult');
-        // recentResult.innerHTML = `${lastData.result}`;
-        recentResult.innerHTML = `<span class="resultNum">${lastData.result}</span>`;
-        resultHistory.innerHTML += ` 
-            <li>${lastData.numOne} ${lastData.operator} ${lastData.numTwo} = ${lastData.result}</li>`;
+//         for(let obj of data) {
+//             // ---------------------------------------- innerHTML/innerTEXT 
+//             resultHistory.innerHTML += ` 
+//                 <li>${obj.numOne} ${obj.operator} ${obj.numTwo} = ${obj.result}</li>
+//             `
+//         }
 
-    })
-}
+//     })
+// }
+
+// getResult();
 
 // ============================== DISPLAY RESULTS FUNCTION ============================== 
 
@@ -160,30 +220,39 @@ function getResult() {
 
 // ============================== CLEAR BUTTON FUNCTION ============================== 
 
-function clearButton() {
+function clearButton(event) {
     // ---------------------------------------- innerHTML/innerTEXT 
-    recentResult.innerHTML = '';
-    orderArray = [];
+    formCalculator.reset();
+    // orderArray = [];
 }
 
 // ============================== GET ON LOAD FUNCTION ============================== 
 
 function onloadGet() {
-    window.addEventListener('load', () => {
 
-        axios({
-            method: 'GET',
-            url: '/calculations'
-        })
-        .then((response) => {
-            let data = response.data;
-            for(let obj of data) {
-                // ---------------------------------------- innerHTML/innerTEXT 
-                resultHistory.innerHTML += ` 
-                    <li>${obj.numOne} ${obj.operator} ${obj.numTwo} = ${obj.result}</li>
-                `
-            }
-        })
-
+    axios({
+        method: 'GET',
+        url: '/calculations'
     })
+    .then((response) => {
+        let data = response.data;
+        // if statement
+        if(data.length === 0) {
+            // error?
+        } else {
+            let lastData = data[data.length - 1];
+            recentResult.innerHTML = '';
+            
+            recentResult.innerHTML = `<span class="resultNum">${lastData.result}</span>`;
+        }
+            resultHistory.innerHTML = '';
+        for(let obj of data) {
+            // ---------------------------------------- innerHTML/innerTEXT 
+            resultHistory.innerHTML += ` 
+                <li>${obj.numOne} ${obj.operator} ${obj.numTwo} = ${obj.result}</li>
+            `
+            console.log("this is obj:", obj);
+        }
+    })
+
 }
